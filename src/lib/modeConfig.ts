@@ -8,7 +8,7 @@ export const MODES: ModeDefinition[] = [
     icon: "🎬",
     folderName: "Iconic Scenes (Video)",
     kind: "video",
-    allowedExtensions: [".mp4", ".webm", ".mov", ".mkv"],
+    allowedExtensions: [".jpg", ".jpeg", ".png", ".webp", ".gif", ".mp4", ".webm", ".mov", ".mkv"],
   },
   {
     key: "opening",
@@ -17,7 +17,7 @@ export const MODES: ModeDefinition[] = [
     icon: "🎵",
     folderName: "Anime Opening (Video)",
     kind: "video",
-    allowedExtensions: [".mp4", ".webm", ".mov", ".mkv"],
+    allowedExtensions: [".jpg", ".jpeg", ".png", ".webp", ".gif", ".mp4", ".webm", ".mov", ".mkv"],
   },
   {
     key: "characters",
