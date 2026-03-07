@@ -11,12 +11,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        {/* ambient background */}
-        <div className="bg-grid" />
-        <div className="bg-orb bg-orb--purple" />
-        <div className="bg-orb bg-orb--blue" />
-        <div className="bg-orb bg-orb--pink" />
-
         <div className="app-shell">
           {/* navigation */}
           <nav className="top-nav">

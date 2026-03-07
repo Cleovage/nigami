@@ -1,32 +1,211 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { MODES } from "@/lib/modeConfig";
+import { useState, useEffect } from "react";
+
+function GodRays() {
+  return (
+    <div className="god-rays-container">
+      <div className="god-ray god-ray--1" />
+      <div className="god-ray god-ray--2" />
+      <div className="god-ray god-ray--3" />
+      <div className="god-ray god-ray--4" />
+      <div className="god-ray god-ray--5" />
+    </div>
+  );
+}
+
+function FloatingParticles() {
+  return (
+    <div className="particles-container">
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div
+          key={i}
+          className="particle"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 8}s`,
+            animationDuration: `${6 + Math.random() * 8}s`,
+            width: `${2 + Math.random() * 4}px`,
+            height: `${2 + Math.random() * 4}px`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
 
 export default function HomePage() {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
-    <>
-      {/* Hero */}
-      <section className="hero">
-        <span className="hero-badge">🎌 Presentation Mode</span>
-        <h1>Anime Quiz</h1>
-        <p className="hero-subtitle">
-          Pick a mode, show the media, reveal the answer — hype up the crowd.
-          No login. No typing. Just pure anime knowledge.
-        </p>
+    <div className={`landing-page ${loaded ? "landing-page--loaded" : ""}`}>
+      {/* Loading overlay */}
+      <div className={`loading-screen ${loaded ? "loading-screen--done" : ""}`}>
+        <div className="loading-spinner-ring">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" className="loading-ring-track" />
+            <circle cx="50" cy="50" r="40" className="loading-ring-fill" />
+          </svg>
+        </div>
+        <span className="loading-text">LOADING</span>
+      </div>
+
+      {/* God rays */}
+      <GodRays />
+
+      {/* Floating particles */}
+      <FloatingParticles />
+
+      {/* Unicorn Studio animated background */}
+      <div className="unicorn-bg">
+        <iframe
+          src="https://unicorn.studio/embed/8bTbhOsualnAQRsjnKbs"
+          width="100%"
+          height="100%"
+          style={{ border: "none", position: "absolute", inset: 0 }}
+          loading="lazy"
+          title="Animated background"
+        />
+      </div>
+
+      {/* Animated background orbs */}
+      <div className="hero-bg-scene">
+        <div className="hero-orb hero-orb--main" />
+        <div className="hero-orb hero-orb--accent" />
+        <div className="hero-orb hero-orb--tertiary" />
+        <div className="hero-mesh" />
+      </div>
+
+      {/* Hero Section */}
+      <section className="landing-hero">
+        <motion.div
+          className="hero-content"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+        >
+          <motion.div
+            className="hero-badge-glow"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <span className="hero-badge-new">
+              <span className="badge-dot" />
+              ANIME QUIZ
+            </span>
+          </motion.div>
+
+          <motion.h1
+            className="hero-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="title-line">
+              <span className="title-glow-text">Anime</span>
+            </span>
+            <span className="title-line">
+              <span className="title-glow-text title-glow-text--accent">Quiz</span>
+            </span>
+          </motion.h1>
+
+          <motion.p
+            className="hero-desc"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+          >
+            Test your anime knowledge. Identify scenes, openings, characters,
+            and more. No login. Just pure anime trivia.
+          </motion.p>
+
+          <motion.div
+            className="hero-cta-group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+          >
+            <Link href="#modes" className="cta-btn cta-btn--primary">
+              <span className="cta-btn__text">Start Playing</span>
+              <span className="cta-btn__arrow">→</span>
+              <div className="cta-btn__glow" />
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="scroll-indicator"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+        >
+          <div className="scroll-mouse">
+            <div className="scroll-wheel" />
+          </div>
+          <span>Scroll to explore</span>
+        </motion.div>
       </section>
 
-      {/* Mode grid */}
-      <section className="mode-grid">
-        {MODES.map((m) => (
-          <Link href={`/play/${m.key}`} key={m.key} className="mode-card" prefetch={false}>
-            <div>
-              <span className="mode-card__icon">{m.icon}</span>
-              <h3 className="mode-card__title">{m.title}</h3>
-              <p className="mode-card__desc">{m.subtitle}</p>
-            </div>
-            <span className="mode-card__cta">Play →</span>
-          </Link>
-        ))}
+      {/* Mode Selection Section */}
+      <section className="modes-section" id="modes">
+        <motion.div
+          className="section-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="section-label">CHOOSE YOUR CHALLENGE</span>
+          <h2 className="section-title">Game Modes</h2>
+        </motion.div>
+
+        <div className="modes-grid">
+          {MODES.map((m, i) => (
+            <motion.div
+              key={m.key}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.6,
+                delay: i * 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <Link href={`/play/${m.key}`} className="glass-card" prefetch={false}>
+                <div className="glass-card__glow" />
+                <div className="glass-card__content">
+                  <div className="glass-card__icon-wrap">
+                    <span className="glass-card__icon">{m.icon}</span>
+                  </div>
+                  <h3 className="glass-card__title">{m.title}</h3>
+                  <p className="glass-card__desc">{m.subtitle}</p>
+                </div>
+                <div className="glass-card__footer">
+                  <span className="glass-card__cta">
+                    Play Now
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+                <div className="glass-card__border-glow" />
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </section>
-    </>
+    </div>
   );
 }
