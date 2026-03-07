@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MODES } from "@/lib/modeConfig";
 import { useState, useEffect } from "react";
 
 function GodRays() {
@@ -135,76 +134,13 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.1 }}
           >
-            <Link href="#modes" className="cta-btn cta-btn--primary">
+            <Link href="/modes" className="cta-btn cta-btn--primary">
               <span className="cta-btn__text">Start Playing</span>
-              <span className="cta-btn__arrow">→</span>
+              <span className="cta-btn__arrow">&rarr;</span>
               <div className="cta-btn__glow" />
             </Link>
           </motion.div>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="scroll-indicator"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-        >
-          <div className="scroll-mouse">
-            <div className="scroll-wheel" />
-          </div>
-          <span>Scroll to explore</span>
-        </motion.div>
-      </section>
-
-      {/* Mode Selection Section */}
-      <section className="modes-section" id="modes">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="section-label">CHOOSE YOUR CHALLENGE</span>
-          <h2 className="section-title">Game Modes</h2>
-        </motion.div>
-
-        <div className="modes-grid">
-          {MODES.map((m, i) => (
-            <motion.div
-              key={m.key}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                duration: 0.6,
-                delay: i * 0.08,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-            >
-              <Link href={`/play/${m.key}`} className="glass-card" prefetch={false}>
-                <div className="glass-card__glow" />
-                <div className="glass-card__content">
-                  <div className="glass-card__icon-wrap">
-                    <span className="glass-card__icon">{m.icon}</span>
-                  </div>
-                  <h3 className="glass-card__title">{m.title}</h3>
-                  <p className="glass-card__desc">{m.subtitle}</p>
-                </div>
-                <div className="glass-card__footer">
-                  <span className="glass-card__cta">
-                    Play Now
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                </div>
-                <div className="glass-card__border-glow" />
-              </Link>
-            </motion.div>
-          ))}
-        </div>
       </section>
     </div>
   );
