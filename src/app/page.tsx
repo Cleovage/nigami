@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 function GodRays() {
   return (
     <div className="god-rays-container">
-      {/* Primary bright rays from top */}
       <div className="god-ray god-ray--1" />
       <div className="god-ray god-ray--2" />
       <div className="god-ray god-ray--3" />
@@ -15,7 +14,6 @@ function GodRays() {
       <div className="god-ray god-ray--5" />
       <div className="god-ray god-ray--6" />
       <div className="god-ray god-ray--7" />
-      {/* Volumetric glow source at top */}
       <div className="god-rays-source" />
     </div>
   );
@@ -24,17 +22,17 @@ function GodRays() {
 function FloatingParticles() {
   return (
     <div className="particles-container">
-      {Array.from({ length: 20 }).map((_, i) => (
+      {Array.from({ length: 30 }).map((_, i) => (
         <div
           key={i}
           className="particle"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 8}s`,
-            animationDuration: `${6 + Math.random() * 8}s`,
-            width: `${2 + Math.random() * 4}px`,
-            height: `${2 + Math.random() * 4}px`,
+            animationDelay: `${Math.random() * 10}s`,
+            animationDuration: `${6 + Math.random() * 10}s`,
+            width: `${1.5 + Math.random() * 3.5}px`,
+            height: `${1.5 + Math.random() * 3.5}px`,
           }}
         />
       ))}
@@ -68,6 +66,12 @@ export default function HomePage() {
 
       {/* Floating particles */}
       <FloatingParticles />
+
+      {/* Noise texture */}
+      <div className="noise-overlay" />
+
+      {/* Vignette */}
+      <div className="vignette-overlay" />
 
       {/* Unicorn Studio animated background */}
       <div className="unicorn-bg">
@@ -121,6 +125,8 @@ export default function HomePage() {
             <span className="title-line">
               <span className="title-glow-text title-glow-text--accent">Quiz</span>
             </span>
+            {/* Horizontal beam behind title */}
+            <div className="hero-title-beam" />
           </motion.h1>
 
           <motion.p
