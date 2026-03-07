@@ -7,11 +7,16 @@ import { useState, useEffect } from "react";
 function GodRays() {
   return (
     <div className="god-rays-container">
+      {/* Primary bright rays from top */}
       <div className="god-ray god-ray--1" />
       <div className="god-ray god-ray--2" />
       <div className="god-ray god-ray--3" />
       <div className="god-ray god-ray--4" />
       <div className="god-ray god-ray--5" />
+      <div className="god-ray god-ray--6" />
+      <div className="god-ray god-ray--7" />
+      {/* Volumetric glow source at top */}
+      <div className="god-rays-source" />
     </div>
   );
 }
@@ -58,7 +63,7 @@ export default function HomePage() {
         <span className="loading-text">LOADING</span>
       </div>
 
-      {/* God rays */}
+      {/* God rays from the top */}
       <GodRays />
 
       {/* Floating particles */}
@@ -134,10 +139,11 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.1 }}
           >
-            <Link href="/modes" className="cta-btn cta-btn--primary">
+            <Link href="/modes" className="cta-btn cta-btn--primary cta-btn--glow-hover">
               <span className="cta-btn__text">Start Playing</span>
               <span className="cta-btn__arrow">&rarr;</span>
               <div className="cta-btn__glow" />
+              <div className="cta-btn__ring-glow" />
             </Link>
           </motion.div>
         </motion.div>
