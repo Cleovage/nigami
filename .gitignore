@@ -1,0 +1,7 @@
+node_modules
+.next
+out
+*.log
+.DS_Store
+Anime Opening (Video)/video_20260301_203755_edit.mp4
+.venv
