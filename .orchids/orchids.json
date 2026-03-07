@@ -1,0 +1,9 @@
+{
+  "projectId": "5363a8fc-dd65-44bb-959d-06254b8b0530",
+  "createdAt": 1772905497442,
+  "version": "1.0",
+  "startupCommands": [
+    "npm install --prefix \"/home/user/app\"; npm run dev --prefix \"/home/user/app\""
+  ],
+  "templateId": "any"
+}
