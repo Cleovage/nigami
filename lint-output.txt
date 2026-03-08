@@ -1,0 +1,162 @@
+
+> anime-quiz-presentation@1.0.0 lint
+> eslint .
+
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\modes\page.tsx
+  31:22  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\modes\page.tsx:31:22
+  29 |           className="particle"
+  30 |           style={{
+> 31 |             left: `${Math.random() * 100}%`,
+     |                      ^^^^^^^^^^^^^ Cannot call impure function
+  32 |             top: `${Math.random() * 100}%`,
+  33 |             animationDelay: `${Math.random() * 10}s`,
+  34 |             animationDuration: `${6 + Math.random() * 10}s`,                                                                 react-hooks/purity
+  32:21  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\modes\page.tsx:32:21
+  30 |           style={{
+  31 |             left: `${Math.random() * 100}%`,
+> 32 |             top: `${Math.random() * 100}%`,
+     |                     ^^^^^^^^^^^^^ Cannot call impure function
+  33 |             animationDelay: `${Math.random() * 10}s`,
+  34 |             animationDuration: `${6 + Math.random() * 10}s`,
+  35 |             width: `${1.5 + Math.random() * 3}px`,                                              react-hooks/purity
+  33:32  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\modes\page.tsx:33:32
+  31 |             left: `${Math.random() * 100}%`,
+  32 |             top: `${Math.random() * 100}%`,
+> 33 |             animationDelay: `${Math.random() * 10}s`,
+     |                                ^^^^^^^^^^^^^ Cannot call impure function
+  34 |             animationDuration: `${6 + Math.random() * 10}s`,
+  35 |             width: `${1.5 + Math.random() * 3}px`,
+  36 |             height: `${1.5 + Math.random() * 3}px`,  react-hooks/purity
+  34:39  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\modes\page.tsx:34:39
+  32 |             top: `${Math.random() * 100}%`,
+  33 |             animationDelay: `${Math.random() * 10}s`,
+> 34 |             animationDuration: `${6 + Math.random() * 10}s`,
+     |                                       ^^^^^^^^^^^^^ Cannot call impure function
+  35 |             width: `${1.5 + Math.random() * 3}px`,
+  36 |             height: `${1.5 + Math.random() * 3}px`,
+  37 |           }}                           react-hooks/purity
+  35:29  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\modes\page.tsx:35:29
+  33 |             animationDelay: `${Math.random() * 10}s`,
+  34 |             animationDuration: `${6 + Math.random() * 10}s`,
+> 35 |             width: `${1.5 + Math.random() * 3}px`,
+     |                             ^^^^^^^^^^^^^ Cannot call impure function
+  36 |             height: `${1.5 + Math.random() * 3}px`,
+  37 |           }}
+  38 |         />                                                                      react-hooks/purity
+  36:30  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\modes\page.tsx:36:30
+  34 |             animationDuration: `${6 + Math.random() * 10}s`,
+  35 |             width: `${1.5 + Math.random() * 3}px`,
+> 36 |             height: `${1.5 + Math.random() * 3}px`,
+     |                              ^^^^^^^^^^^^^ Cannot call impure function
+  37 |           }}
+  38 |         />
+  39 |       ))}                                                                                                                 react-hooks/purity
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\page.tsx
+  30:22  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\page.tsx:30:22
+  28 |           className="particle"
+  29 |           style={{
+> 30 |             left: `${Math.random() * 100}%`,
+     |                      ^^^^^^^^^^^^^ Cannot call impure function
+  31 |             top: `${Math.random() * 100}%`,
+  32 |             animationDelay: `${Math.random() * 10}s`,
+  33 |             animationDuration: `${6 + Math.random() * 10}s`,                                                                     react-hooks/purity
+  31:21  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\page.tsx:31:21
+  29 |           style={{
+  30 |             left: `${Math.random() * 100}%`,
+> 31 |             top: `${Math.random() * 100}%`,
+     |                     ^^^^^^^^^^^^^ Cannot call impure function
+  32 |             animationDelay: `${Math.random() * 10}s`,
+  33 |             animationDuration: `${6 + Math.random() * 10}s`,
+  34 |             width: `${1.5 + Math.random() * 3.5}px`,                                                react-hooks/purity
+  32:32  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\page.tsx:32:32
+  30 |             left: `${Math.random() * 100}%`,
+  31 |             top: `${Math.random() * 100}%`,
+> 32 |             animationDelay: `${Math.random() * 10}s`,
+     |                                ^^^^^^^^^^^^^ Cannot call impure function
+  33 |             animationDuration: `${6 + Math.random() * 10}s`,
+  34 |             width: `${1.5 + Math.random() * 3.5}px`,
+  35 |             height: `${1.5 + Math.random() * 3.5}px`,  react-hooks/purity
+  33:39  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\page.tsx:33:39
+  31 |             top: `${Math.random() * 100}%`,
+  32 |             animationDelay: `${Math.random() * 10}s`,
+> 33 |             animationDuration: `${6 + Math.random() * 10}s`,
+     |                                       ^^^^^^^^^^^^^ Cannot call impure function
+  34 |             width: `${1.5 + Math.random() * 3.5}px`,
+  35 |             height: `${1.5 + Math.random() * 3.5}px`,
+  36 |           }}                           react-hooks/purity
+  34:29  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\page.tsx:34:29
+  32 |             animationDelay: `${Math.random() * 10}s`,
+  33 |             animationDuration: `${6 + Math.random() * 10}s`,
+> 34 |             width: `${1.5 + Math.random() * 3.5}px`,
+     |                             ^^^^^^^^^^^^^ Cannot call impure function
+  35 |             height: `${1.5 + Math.random() * 3.5}px`,
+  36 |           }}
+  37 |         />                                                                      react-hooks/purity
+  35:30  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\app\page.tsx:35:30
+  33 |             animationDuration: `${6 + Math.random() * 10}s`,
+  34 |             width: `${1.5 + Math.random() * 3.5}px`,
+> 35 |             height: `${1.5 + Math.random() * 3.5}px`,
+     |                              ^^^^^^^^^^^^^ Cannot call impure function
+  36 |           }}
+  37 |         />
+  38 |       ))}                                                                                                                 react-hooks/purity
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\lib\mediaScanner.ts
+  61:7  error  'entries' is never reassigned. Use 'const' instead  prefer-const
+
+C:\Users\rk107\Desktop\ANIME_QUIZ\src\lib\modeConfig.ts
+  1:31  warning  'ModeKey' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 14 problems (13 errors, 1 warning)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+

@@ -26,6 +26,7 @@ export interface MediaItem {
   answer: string;
   contentUrl: string;
   kind: MediaKind;
+  difficulty?: "Easy" | "Medium" | "Hard" | null;
 }
 
 export interface MediaApiResponse {

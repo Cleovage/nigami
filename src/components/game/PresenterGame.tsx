@@ -196,7 +196,14 @@ export default function PresenterGame({ mode }: { mode: ModeKey }) {
       <div className="play-header">
         <div className="play-header__left">
           <h2>{icon} {title}</h2>
-          <span className="round-badge">Round {round} / {total}</span>
+          <div className="header-badges">
+            <span className="round-badge">Round {round} / {total}</span>
+            {current?.difficulty && (
+              <span className={`difficulty-badge difficulty-badge--${current.difficulty.toLowerCase()}`}>
+                {current.difficulty}
+              </span>
+            )}
+          </div>
         </div>
         <div className="play-header__right">
           {/* timer presets */}
