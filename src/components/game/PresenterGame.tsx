@@ -43,6 +43,7 @@ export default function PresenterGame({ mode }: { mode: ModeKey }) {
   const [timeLeft, setTimeLeft] = useState(15);
   const [timedOut, setTimedOut] = useState(false);
   const [soundOn, setSoundOn] = useState(true);
+  const [blurPreview, setBlurPreview] = useState(false);
   const soundRef = useRef(true);
   useEffect(() => { soundRef.current = soundOn; }, [soundOn]);
 
@@ -129,6 +130,7 @@ export default function PresenterGame({ mode }: { mode: ModeKey }) {
       if (e.key === "r" || e.key === "R") reveal();
       if (e.key === "n" || e.key === "N") next();
       if (e.key === "m" || e.key === "M") setSoundOn((v) => !v);
+      if (e.key === "b" || e.key === "B") setBlurPreview((v) => !v);
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -227,6 +229,14 @@ export default function PresenterGame({ mode }: { mode: ModeKey }) {
           >
             {soundOn ? "🔊" : "🔇"}
           </button>
+          {/* blur toggle */}
+          <button
+            className={`btn-icon${blurPreview ? " btn-icon--blur-active" : ""}`}
+            onClick={() => setBlurPreview((v) => !v)}
+            title={blurPreview ? "Unblur preview" : "Blur preview"}
+          >
+            {blurPreview ? "🔍" : "🌫️"}
+          </button>
           <Link href="/" className="btn btn--back">← Modes</Link>
         </div>
       </div>
@@ -307,7 +317,7 @@ export default function PresenterGame({ mode }: { mode: ModeKey }) {
             </div>
           )}
 
-          <div className={`stage__inner${imageBlurred ? " stage__inner--blurred" : ""}`}>
+          <div className={`stage__inner${imageBlurred ? " stage__inner--blurred" : ""}${blurPreview ? " stage__inner--user-blurred" : ""}`}>
             {current.kind === "video" ? (
               <video
                 key={current.id}
@@ -367,6 +377,7 @@ export default function PresenterGame({ mode }: { mode: ModeKey }) {
         <span><span className="kbd">R</span> Reveal</span>
         <span><span className="kbd">N</span> Next</span>
         <span><span className="kbd">M</span> Mute</span>
+        <span><span className="kbd">B</span> Blur</span>
       </div>
     </div>
   );
