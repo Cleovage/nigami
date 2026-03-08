@@ -234,78 +234,103 @@ export default function PresenterGame({ mode }: { mode: ModeKey }) {
         ))}
       </div>
 
-      {/* media stage */}
-      <div className={`stage${timerWarning ? " stage--warning" : ""}`} aria-live="polite">
-
-        {/* Vector-animated cover — wipes left→right to reveal new media */}
-        <div className={`stage__loading-cover${mediaLoaded ? " stage__loading-cover--done" : ""}`}>
-          {/* horizontal scanline sweeps top→bottom while loading */}
-          <div className="stage__scanline" />
-          {/* corner-bracket targeting reticle */}
-          <svg
-            className="stage__brackets"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            {/* corners */}
-            <polyline points="0,18 0,0 18,0"        fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.45" />
-            <polyline points="82,0 100,0 100,18"    fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.45" />
-            <polyline points="0,82 0,100 18,100"    fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.45" />
-            <polyline points="82,100 100,100 100,82" fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.45" />
-            {/* centre crosshair */}
-            <circle cx="50" cy="50" r="11" fill="none" stroke="white" strokeWidth="0.7" strokeOpacity="0.18" />
-            <line x1="44" y1="50" x2="56" y2="50" stroke="white" strokeWidth="0.8" strokeOpacity="0.28" />
-            <line x1="50" y1="44" x2="50" y2="56" stroke="white" strokeWidth="0.8" strokeOpacity="0.28" />
-          </svg>
-        </div>
-
-        {/* Timer ring overlay */}
-        {timerActive && !revealed && (
-          <div className={`timer-ring${timerWarning ? " timer-ring--warning" : ""}${timedOut ? " timer-ring--timed-out" : ""}`}>
-            <svg className="timer-ring__svg" viewBox="0 0 100 100">
-              <circle className="timer-ring__bg" cx="50" cy="50" r={RING_R} />
-              <circle
-                className="timer-ring__progress"
-                cx="50" cy="50" r={RING_R}
-                strokeDasharray={RING_C}
-                strokeDashoffset={timedOut ? RING_C : dashOffset}
-              />
-            </svg>
-            <span className="timer-ring__text">{timedOut ? "✕" : timeLeft}</span>
-          </div>
-        )}
-
-        <div className={`stage__inner${imageBlurred ? " stage__inner--blurred" : ""}`}>
-          {current.kind === "video" ? (
-            <video
-              key={current.id}
-              src={current.contentUrl}
-              controls
-              preload="metadata"
-              playsInline
-              className="stage__media"
-              onLoadedMetadata={() => setMediaLoaded(true)}
-            />
-          ) : (
+      {/* media stage + ambient glow wrapper */}
+      <div className="stage-glow-wrap">
+        {/* Blurred ambient light — matches displayed picture */}
+        <div className="stage-ambient" aria-hidden="true">
+          {current.kind !== "video" ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              key={current.id}
+              key={`ambient-${current.id}`}
               src={current.contentUrl}
-              alt="Quiz media"
-              className="stage__media"
-              loading="eager"
-              onLoad={() => setMediaLoaded(true)}
+              alt=""
+              className="stage-ambient__img"
             />
+          ) : (
+            <div className="stage-ambient__fallback" />
           )}
         </div>
 
-        {/* Blurred-overlay prompt — only shown in opening mode before reveal */}
-        {isOpeningMode && (
-          <div className={`stage__overlay ${revealed ? "stage__overlay--hidden" : ""}`}>
-            <span className="stage__overlay-text">🎵 Guess the Opening!</span>
+        {/* Godrays emanating from stage */}
+        <div className="stage-godrays" aria-hidden="true">
+          <div className="stage-godray stage-godray--1" />
+          <div className="stage-godray stage-godray--2" />
+          <div className="stage-godray stage-godray--3" />
+          <div className="stage-godray stage-godray--4" />
+        </div>
+
+        <div className={`stage${timerWarning ? " stage--warning" : ""}`} aria-live="polite">
+
+          {/* Vector-animated cover — wipes left→right to reveal new media */}
+          <div className={`stage__loading-cover${mediaLoaded ? " stage__loading-cover--done" : ""}`}>
+            {/* horizontal scanline sweeps top→bottom while loading */}
+            <div className="stage__scanline" />
+            {/* corner-bracket targeting reticle */}
+            <svg
+              className="stage__brackets"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              {/* corners */}
+              <polyline points="0,18 0,0 18,0"        fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.45" />
+              <polyline points="82,0 100,0 100,18"    fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.45" />
+              <polyline points="0,82 0,100 18,100"    fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.45" />
+              <polyline points="82,100 100,100 100,82" fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.45" />
+              {/* centre crosshair */}
+              <circle cx="50" cy="50" r="11" fill="none" stroke="white" strokeWidth="0.7" strokeOpacity="0.18" />
+              <line x1="44" y1="50" x2="56" y2="50" stroke="white" strokeWidth="0.8" strokeOpacity="0.28" />
+              <line x1="50" y1="44" x2="50" y2="56" stroke="white" strokeWidth="0.8" strokeOpacity="0.28" />
+            </svg>
           </div>
-        )}
+
+          {/* Timer ring overlay */}
+          {timerActive && !revealed && (
+            <div className={`timer-ring${timerWarning ? " timer-ring--warning" : ""}${timedOut ? " timer-ring--timed-out" : ""}`}>
+              <svg className="timer-ring__svg" viewBox="0 0 100 100">
+                <circle className="timer-ring__bg" cx="50" cy="50" r={RING_R} />
+                <circle
+                  className="timer-ring__progress"
+                  cx="50" cy="50" r={RING_R}
+                  strokeDasharray={RING_C}
+                  strokeDashoffset={timedOut ? RING_C : dashOffset}
+                />
+              </svg>
+              <span className="timer-ring__text">{timedOut ? "✕" : timeLeft}</span>
+            </div>
+          )}
+
+          <div className={`stage__inner${imageBlurred ? " stage__inner--blurred" : ""}`}>
+            {current.kind === "video" ? (
+              <video
+                key={current.id}
+                src={current.contentUrl}
+                controls
+                preload="metadata"
+                playsInline
+                className="stage__media"
+                onLoadedMetadata={() => setMediaLoaded(true)}
+              />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={current.id}
+                src={current.contentUrl}
+                alt="Quiz media"
+                className="stage__media"
+                loading="eager"
+                onLoad={() => setMediaLoaded(true)}
+              />
+            )}
+          </div>
+
+          {/* Blurred-overlay prompt — only shown in opening mode before reveal */}
+          {isOpeningMode && (
+            <div className={`stage__overlay ${revealed ? "stage__overlay--hidden" : ""}`}>
+              <span className="stage__overlay-text">🎵 Guess the Opening!</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* answer panel — answer text always hidden until reveal, image only hidden for opening */}
